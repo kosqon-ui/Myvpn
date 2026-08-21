@@ -1,13 +1,7 @@
-FROM alpine:latest
+FROM apernet/hysteria:v2.6.0
 
-# تثبيت الحزم الأساسية وأحدث إصدار من Hysteria
-RUN apk add --no-cache wget curl && \
-    wget -O /usr/bin/hysteria https://github.com/apernet/hysteria/releases/download/v2.6.0/hysteria-linux-amd64 && \
-    chmod +x /usr/bin/hysteria
-
-# نسخ ملف الإعدادات
 COPY config.yaml /etc/hysteria/config.yaml
 
-EXPOSE 8080
+EXPOSE 8080/tcp 8080/udp
 
-CMD ["/usr/bin/hysteria", "server", "-c", "/etc/hysteria/config.yaml"]
+ENTRYPOINT ["/usr/bin/hysteria", "server", "-c", "/etc/hysteria/config.yaml"]
