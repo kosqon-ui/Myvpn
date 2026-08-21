@@ -1,0 +1,14 @@
+listen: :8080
+
+users:
+  mazo@2004asadi: ""
+
+obfuscation:
+  type: salamander
+  password: "SecretObfuscationKey123"
+
+masquerade:
+  type: proxy
+  proxy:
+    url: https://www.bing.com
+    rewriteHost: true
